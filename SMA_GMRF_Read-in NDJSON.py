@@ -20,12 +20,11 @@ import pandas as pd
 import numpy as np
 import ndjson
 import os
-import gzip
 import fnmatch
 
 
 # folder with the Reference, Data, Word Count, and Sentiment zipped files
-os.chdir('C:\\vscode\\code\\practicum\\JSON_Data')
+os.chdir('E:\\TJ\\en-US')
 
 
 #### Filing Reference Package ####
@@ -42,13 +41,13 @@ for file in os.listdir():
 ref_normalize = pd.json_normalize(combined_ref)
 
 # change order of columns to reflect User Guide documentation
-ref_normalize = ref_normalize[['ID', 'DOCUMENT_ID','DOCUMENT_TYPE','FILING_DATE','MODIFIED_AT','DETAIL_JSON.company_name', 'DETAIL_JSON.parsing_status']]
+ref_normalize = ref_normalize[['ID', 'DOCUMENT_ID','DOCUMENT_TYPE','FILING_DATE','MODIFIED_AT','DETAIL_JSON.company_name','DETAIL_JSON.isin', 'DETAIL_JSON.ISIN_active','DETAIL_JSON.SP_DocumentId', 'DETAIL_JSON.parsing_status']]
 
 # convert the ID and document ID field to a string
 ref_normalize['ID'] = ref_normalize['ID'].apply(str)
 ref_normalize['DOCUMENT_ID'] = ref_normalize['DOCUMENT_ID'].apply(str)
-# ref_normalize['DETAIL_JSON.ISIN_active'] = ref_normalize['DETAIL_JSON.ISIN_active'].apply(str)
-# ref_normalize['DETAIL_JSON.SP_DocumentId'] = ref_normalize['DETAIL_JSON.SP_DocumentId'].apply(str)
+ref_normalize['DETAIL_JSON.ISIN_active'] = ref_normalize['DETAIL_JSON.ISIN_active'].apply(str)
+ref_normalize['DETAIL_JSON.SP_DocumentId'] = ref_normalize['DETAIL_JSON.SP_DocumentId'].apply(str)
 
 #### Sentiment Score Package ####
 # create an empty list, combined_sc, and loop through each file and combine to combined_sc
@@ -56,7 +55,7 @@ ref_normalize['DOCUMENT_ID'] = ref_normalize['DOCUMENT_ID'].apply(str)
 combined_sc = []
 for file in os.listdir():
     if(fnmatch.fnmatch(file, 'SP_FILING_SENTIMENT*')):
-        with open(file,'r',encoding='utf_8') as sc:# gzip 用来打开压缩文件中的数据
+        with open(file,'r',encoding='utf_8') as sc:
             sc = ndjson.load(sc)
         combined_sc.extend(sc)  
 
@@ -173,21 +172,22 @@ ars = filing_level_func('ar')
 
 ## Get just the documents for active companies with their active ISINs or non-active companies with all their ISINs
 # Count the number of ISINs that are active and non-active for each document_id
-# doc_id_table = pd.crosstab(index = ref_normalize['DOCUMENT_ID'], columns = ref_normalize['DETAIL_JSON.ISIN_active'])
+doc_id_table = pd.crosstab(index = ref_normalize['DOCUMENT_ID'], columns = ref_normalize['DETAIL_JSON.ISIN_active'])
 
 # docs with active ISINs have more than 0 in 1.0 column
-# actives = doc_id_table[doc_id_table['1.0'] > 0]
+actives = doc_id_table[doc_id_table['1.0'] > 0]
 # docs from inactive companies have more than 0 in 0.0 column and exactly 0 in 1.0 column
-# non_actives = doc_id_table[(doc_id_table['0.0'] > 0) & (doc_id_table['1.0'] == 0)]
+non_actives = doc_id_table[(doc_id_table['0.0'] > 0) & (doc_id_table['1.0'] == 0)]
 
 # add flags to ref_normalize
-# ref_normalize['active'] = ref_normalize['DOCUMENT_ID'].isin(actives.index).astype(int)
-# ref_normalize['not_active'] = ref_normalize['DOCUMENT_ID'].isin(non_actives.index).astype(int)
+ref_normalize['active'] = ref_normalize['DOCUMENT_ID'].isin(actives.index).astype(int)
+ref_normalize['not_active'] = ref_normalize['DOCUMENT_ID'].isin(non_actives.index).astype(int)
 
 # filter ref_normalize active companies and just their active ISINs or inactive companies with all their ISINs
-# onlyActive_allNonActive = ref_normalize[(ref_normalize['active'] == 1) & (ref_normalize['DETAIL_JSON.ISIN_active'] == '1.0') | ref_normalize['not_active'] == 1]
+onlyActive_allNonActive = ref_normalize[(ref_normalize['active'] == 1) & (ref_normalize['DETAIL_JSON.ISIN_active'] == '1.0') | ref_normalize['not_active'] == 1]
 
 # Join reference information with sentiment metrics
-combined = pd.merge(left = ref_normalize, right = ars, on = 'ID')
+combined = pd.merge(left = onlyActive_allNonActive, right = ars, on = 'ID')
+
 
 print(combined)
