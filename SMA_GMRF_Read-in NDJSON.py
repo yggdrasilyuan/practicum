@@ -170,6 +170,8 @@ def sub_level_func(filing_type, section, sub):
 # get the AR sentiment data at the filing level
 ars = filing_level_func('ar')
 
+
+
 ## Get just the documents for active companies with their active ISINs or non-active companies with all their ISINs
 # Count the number of ISINs that are active and non-active for each document_id
 doc_id_table = pd.crosstab(index = ref_normalize['DOCUMENT_ID'], columns = ref_normalize['DETAIL_JSON.ISIN_active'])
