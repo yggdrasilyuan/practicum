@@ -1,0 +1,402 @@
+['ID', 'DOCUMENT_ID','DOCUMENT_TYPE','FILING_DATE','MODIFIED_AT','DETAIL_JSON.company_name', 'DETAIL_JSON.parsing_status',
+'avg_sent_x','sum_sent_x','hit_count_x','positive_hits_x','negative_hits_x','section_count_x','word_count_x'
+'avg_sent_y','sum_sent_y','hit_count_y','positive_hits_y','negative_hits_y','section_count_y','word_count_y'])
+
+
+
+These are RO country's data: 
+In this country RO has 484 files
+How many files has no RF: 0
+Json_error_number: 11
+origin_line_number: 204
+drop_duplicate_lines_number: 109
+
+
+
+These are RS country's data: 
+In this country RS has 228 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 76
+drop_duplicate_lines_number: 26
+
+
+
+These are RU country's data: 
+In this country RU has 1424 files
+How many files has no RF: 0
+Json_error_number: 2
+origin_line_number: 603
+drop_duplicate_lines_number: 262
+
+
+
+These are RW country's data: 
+In this country RW has 72 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 31
+drop_duplicate_lines_number: 14
+
+
+
+These are SA country's data: 
+In this country SA has 652 files
+How many files has no RF: 0
+Json_error_number: 4
+origin_line_number: 205
+drop_duplicate_lines_number: 58
+
+
+
+These are SC country's data: 
+In this country SC has 24 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 12
+drop_duplicate_lines_number: 6
+
+
+
+These are SD country's data: 
+In this country SD has 64 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 22
+drop_duplicate_lines_number: 8
+
+
+
+These are SE country's data: 
+In this country SE has 4884 files
+How many files has no RF: 0
+Json_error_number: 1
+origin_line_number: 2605
+drop_duplicate_lines_number: 1359
+
+
+
+These are SG country's data: 
+In this country SG has 2212 files
+How many files has no RF: 0
+Json_error_number: 15
+origin_line_number: 1729
+drop_duplicate_lines_number: 837
+
+
+
+These are SI country's data: 
+In this country SI has 340 files
+How many files has no RF: 0
+Json_error_number: 2
+origin_line_number: 127
+drop_duplicate_lines_number: 55
+
+
+
+These are SK country's data: 
+In this country SK has 244 files
+How many files has no RF: 0
+Json_error_number: 2
+origin_line_number: 74
+drop_duplicate_lines_number: 21
+
+
+
+These are SL country's data: 
+In this country SL has 32 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 9
+drop_duplicate_lines_number: 2
+
+
+
+These are SM country's data: 
+In this country SM has 12 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 3
+drop_duplicate_lines_number: 0
+
+
+
+These are SN country's data: 
+In this country SN has 28 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 7
+drop_duplicate_lines_number: 0
+
+
+
+These are SR country's data: 
+In this country SR has 4 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 1
+drop_duplicate_lines_number: 0
+
+
+
+These are ST country's data: 
+In this country ST has 4 files
+How many files has no RF: 1
+Json_error_number: 0
+origin_line_number: 0
+drop_duplicate_lines_number: 0
+
+
+
+These are SV country's data: 
+In this country SV has 12 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 3
+drop_duplicate_lines_number: 0
+
+
+
+These are SY country's data: 
+In this country SY has 64 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 17
+drop_duplicate_lines_number: 0
+
+
+
+These are SZ country's data: 
+In this country SZ has 36 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 8
+drop_duplicate_lines_number: 0
+
+
+
+These are TC country's data: 
+In this country TC has 16 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 4
+drop_duplicate_lines_number: 0
+
+
+
+These are TD country's data: 
+In this country TD has 4 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 1
+drop_duplicate_lines_number: 0
+
+
+
+These are TG country's data: 
+In this country TG has 84 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 36
+drop_duplicate_lines_number: 19
+
+
+
+These are TH country's data: 
+In this country TH has 2828 files
+How many files has no RF: 0
+Json_error_number: 19
+origin_line_number: 4546
+drop_duplicate_lines_number: 3439
+
+
+
+These are TJ country's data: 
+In this country TJ has 16 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 2
+drop_duplicate_lines_number: 0
+
+
+
+These are TM country's data: 
+In this country TM has 36 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 9
+drop_duplicate_lines_number: 0
+
+
+
+These are TN country's data: 
+In this country TN has 100 files
+How many files has no RF: 0
+Json_error_number: 1
+origin_line_number: 20
+drop_duplicate_lines_number: 0
+
+
+
+These are TR country's data: 
+In this country TR has 796 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 230
+drop_duplicate_lines_number: 50
+
+
+
+These are TT country's data: 
+In this country TT has 212 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 70
+drop_duplicate_lines_number: 26
+
+
+
+These are TW country's data: 
+In this country TW has 1152 files
+How many files has no RF: 0
+Json_error_number: 4
+origin_line_number: 542
+drop_duplicate_lines_number: 266
+
+
+
+These are TZ country's data: 
+In this country TZ has 220 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 91
+drop_duplicate_lines_number: 45
+
+
+
+These are UA country's data: 
+In this country UA has 292 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 103
+drop_duplicate_lines_number: 41
+
+
+
+These are UG country's data: 
+In this country UG has 156 files
+How many files has no RF: 0
+Json_error_number: 1
+origin_line_number: 49
+drop_duplicate_lines_number: 15
+
+
+
+These are US country's data: 
+In this country US has 9780 files
+How many files has no RF: 0
+Json_error_number: 19
+origin_line_number: 7764
+drop_duplicate_lines_number: 3983
+
+
+
+These are UY country's data: 
+In this country UY has 36 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 15
+drop_duplicate_lines_number: 8
+
+
+
+These are UZ country's data: 
+In this country UZ has 88 files
+How many files has no RF: 0
+Json_error_number: 1
+origin_line_number: 20
+drop_duplicate_lines_number: 0
+
+
+
+These are VE country's data: 
+In this country VE has 24 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 10
+drop_duplicate_lines_number: 5
+
+
+
+These are VG country's data: 
+In this country VG has 372 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 208
+drop_duplicate_lines_number: 132
+
+
+
+These are VN country's data: 
+In this country VN has 704 files
+How many files has no RF: 0
+Json_error_number: 1
+origin_line_number: 221
+drop_duplicate_lines_number: 63
+
+
+
+These are VU country's data: 
+In this country VU has 8 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 2
+drop_duplicate_lines_number: 0
+
+
+
+These are WS country's data: 
+In this country WS has 8 files
+How many files has no RF: 1
+Json_error_number: 0
+origin_line_number: 0
+drop_duplicate_lines_number: 0
+
+
+
+These are YE country's data: 
+In this country YE has 16 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 3
+drop_duplicate_lines_number: 0
+
+
+
+These are ZA country's data: 
+In this country ZA has 4100 files
+How many files has no RF: 0
+Json_error_number: 5
+origin_line_number: 2046
+drop_duplicate_lines_number: 916
+
+
+
+These are ZM country's data: 
+In this country ZM has 96 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 25
+drop_duplicate_lines_number: 0
+
+
+
+These are ZW country's data: 
+In this country ZW has 380 files
+How many files has no RF: 0
+Json_error_number: 0
+origin_line_number: 120
+drop_duplicate_lines_number: 37
+
+
+
