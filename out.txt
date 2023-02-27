@@ -1,12 +1,9 @@
-['ID', 'DOCUMENT_ID','DOCUMENT_TYPE','FILING_DATE','MODIFIED_AT','DETAIL_JSON.company_name', 'DETAIL_JSON.parsing_status',
-'avg_sent_x','sum_sent_x','hit_count_x','positive_hits_x','negative_hits_x','section_count_x','word_count_x'
-'avg_sent_y','sum_sent_y','hit_count_y','positive_hits_y','negative_hits_y','section_count_y','word_count_y'])
+
 
 
 
 These are RO country's data: 
 In this country RO has 484 files
-How many files has no RF: 0
 Json_error_number: 11
 origin_line_number: 204
 drop_duplicate_lines_number: 109
@@ -15,7 +12,6 @@ drop_duplicate_lines_number: 109
 
 These are RS country's data: 
 In this country RS has 228 files
-How many files has no RF: 0
 Json_error_number: 0
 origin_line_number: 76
 drop_duplicate_lines_number: 26
@@ -24,7 +20,6 @@ drop_duplicate_lines_number: 26
 
 These are RU country's data: 
 In this country RU has 1424 files
-How many files has no RF: 0
 Json_error_number: 2
 origin_line_number: 603
 drop_duplicate_lines_number: 262
@@ -321,7 +316,6 @@ drop_duplicate_lines_number: 0
 
 These are VE country's data: 
 In this country VE has 24 files
-How many files has no RF: 0
 Json_error_number: 0
 origin_line_number: 10
 drop_duplicate_lines_number: 5
@@ -330,7 +324,6 @@ drop_duplicate_lines_number: 5
 
 These are VG country's data: 
 In this country VG has 372 files
-How many files has no RF: 0
 Json_error_number: 0
 origin_line_number: 208
 drop_duplicate_lines_number: 132
@@ -339,7 +332,6 @@ drop_duplicate_lines_number: 132
 
 These are VN country's data: 
 In this country VN has 704 files
-How many files has no RF: 0
 Json_error_number: 1
 origin_line_number: 221
 drop_duplicate_lines_number: 63
