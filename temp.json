@@ -1,0 +1,284 @@
+{
+  "ID": 3746245,
+  "SENTIMENT": {
+    "ar": {
+      "accumulated": {
+        "": {
+          "avg_sent": -0.01164148352,
+          "hit_count": 13,
+          "negative_hits": 7,
+          "positive_hits": 6,
+          "section_count": 1,
+          "sum_sent": -0.01164148352,
+          "word_count": 111
+        },
+        "avg_sent": -0.01164148352,
+        "hit_count": 13,
+        "negative_hits": 7,
+        "positive_hits": 6,
+        "section_count": 1,
+        "sum_sent": -0.01164148352,
+        "word_count": 111
+      },
+      "avg_sent": 0.2019629873,
+      "data": {
+        "": {
+          "avg_sent": 0.8487914853,
+          "hit_count": 113,
+          "negative_hits": 41,
+          "positive_hits": 72,
+          "section_count": 1,
+          "sum_sent": 0.8487914853,
+          "word_count": 1209
+        },
+        "avg_sent": 0.8487914853,
+        "hit_count": 113,
+        "negative_hits": 41,
+        "positive_hits": 72,
+        "section_count": 1,
+        "sum_sent": 0.8487914853,
+        "word_count": 1209
+      },
+      "defining community banking": {
+        "": {
+          "avg_sent": 0,
+          "hit_count": 0,
+          "negative_hits": 0,
+          "positive_hits": 0,
+          "section_count": 1,
+          "sum_sent": 0,
+          "word_count": 11
+        },
+        "avg_sent": 0,
+        "hit_count": 0,
+        "negative_hits": 0,
+        "positive_hits": 0,
+        "section_count": 1,
+        "sum_sent": 0,
+        "word_count": 11
+      },
+      "following 5 years 275,195": {
+        "avg_sent": -0.2164295656,
+        "hit_count": 159,
+        "negative_hits": 81,
+        "note 10 - loan commitments and standby letters of credit": {
+          "avg_sent": -0.2387541099,
+          "hit_count": 61,
+          "negative_hits": 31,
+          "positive_hits": 30,
+          "section_count": 1,
+          "sum_sent": -0.2387541099,
+          "word_count": 552
+        },
+        "note 11 — regulatory matters": {
+          "avg_sent": -0.413972087,
+          "hit_count": 92,
+          "negative_hits": 47,
+          "positive_hits": 45,
+          "section_count": 1,
+          "sum_sent": -0.413972087,
+          "word_count": 1349
+        },
+        "note 14 - change in other comprehensive income (loss)": {
+          "avg_sent": 0.0034375,
+          "hit_count": 6,
+          "negative_hits": 3,
+          "positive_hits": 3,
+          "section_count": 1,
+          "sum_sent": 0.0034375,
+          "word_count": 57
+        },
+        "positive_hits": 78,
+        "section_count": 3,
+        "sum_sent": -0.6492886969,
+        "word_count": 1982
+      },
+      "hcb finanical corp. consolidated statements of cash flows": {
+        "average of impaired loans during the year interest income recognized during impairment cash-basis interest income recognized": {
+          "avg_sent": -0.03,
+          "hit_count": 5,
+          "negative_hits": 4,
+          "positive_hits": 1,
+          "section_count": 1,
+          "sum_sent": -0.03,
+          "word_count": 37
+        },
+        "avg_sent": 0.07905455979,
+        "corporate equity securities": {
+          "avg_sent": -0.1104910714,
+          "hit_count": 4,
+          "negative_hits": 4,
+          "positive_hits": 0,
+          "section_count": 1,
+          "sum_sent": -0.1104910714,
+          "word_count": 18
+        },
+        "corporate equity securities (1)": {
+          "avg_sent": -0.0190625,
+          "hit_count": 4,
+          "negative_hits": 2,
+          "positive_hits": 2,
+          "section_count": 1,
+          "sum_sent": -0.0190625,
+          "word_count": 23
+        },
+        "data": {
+          "avg_sent": 1.246655506,
+          "hit_count": 71,
+          "negative_hits": 25,
+          "positive_hits": 46,
+          "section_count": 1,
+          "sum_sent": 1.246655506,
+          "word_count": 969
+        },
+        "equity securities": {
+          "avg_sent": 0.3125,
+          "hit_count": 1,
+          "negative_hits": 0,
+          "positive_hits": 1,
+          "section_count": 1,
+          "sum_sent": 0.3125,
+          "word_count": 18
+        },
+        "held-to-maturity": {
+          "avg_sent": -0.06283482143,
+          "hit_count": 4,
+          "negative_hits": 3,
+          "positive_hits": 1,
+          "section_count": 1,
+          "sum_sent": -0.06283482143,
+          "word_count": 83
+        },
+        "hit_count": 352,
+        "individually classified impaired loans.": {
+          "avg_sent": 0.05,
+          "hit_count": 4,
+          "negative_hits": 0,
+          "positive_hits": 4,
+          "section_count": 1,
+          "sum_sent": 0.05,
+          "word_count": 123
+        },
+        "negative_hits": 172,
+        "pledged to secure public deposits and other purposes as required or permitted by law.": {
+          "avg_sent": -0.08126785708,
+          "hit_count": 71,
+          "negative_hits": 32,
+          "positive_hits": 39,
+          "section_count": 1,
+          "sum_sent": -0.08126785708,
+          "word_count": 713
+        },
+        "positive_hits": 180,
+        "reasonably assured.": {
+          "avg_sent": -0.5940082176,
+          "hit_count": 188,
+          "negative_hits": 102,
+          "positive_hits": 86,
+          "section_count": 1,
+          "sum_sent": -0.5940082176,
+          "word_count": 2165
+        },
+        "section_count": 9,
+        "sum_sent": 0.7114910381,
+        "word_count": 4196
+      },
+      "hit_count": 721,
+      "negative_hits": 324,
+      "positive_hits": 397,
+      "quie eek ep": {
+        "": {
+          "avg_sent": 0.01738690476,
+          "hit_count": 27,
+          "negative_hits": 10,
+          "positive_hits": 17,
+          "section_count": 1,
+          "sum_sent": 0.01738690476,
+          "word_count": 264
+        },
+        "avg_sent": 0.01738690476,
+        "hit_count": 27,
+        "negative_hits": 10,
+        "positive_hits": 17,
+        "section_count": 1,
+        "sum_sent": 0.01738690476,
+        "word_count": 264
+      },
+      "section_count": 20,
+      "sum_sent": 2.019629873,
+      "the official staff for 2010": {
+        "": {
+          "avg_sent": 0.075,
+          "hit_count": 2,
+          "negative_hits": 0,
+          "positive_hits": 2,
+          "section_count": 1,
+          "sum_sent": 0.075,
+          "word_count": 437
+        },
+        "avg_sent": 0.075,
+        "hit_count": 2,
+        "negative_hits": 0,
+        "positive_hits": 2,
+        "section_count": 1,
+        "sum_sent": 0.075,
+        "word_count": 437
+      },
+      "thereafter 120,480": {
+        "": {
+          "avg_sent": 0.13,
+          "hit_count": 10,
+          "negative_hits": 3,
+          "positive_hits": 7,
+          "section_count": 1,
+          "sum_sent": 0.13,
+          "word_count": 148
+        },
+        "avg_sent": 0.13,
+        "hit_count": 10,
+        "negative_hits": 3,
+        "positive_hits": 7,
+        "section_count": 1,
+        "sum_sent": 0.13,
+        "word_count": 148
+      },
+      "thereafter 4,000,000": {
+        "": {
+          "avg_sent": 0.7041406249,
+          "hit_count": 34,
+          "negative_hits": 9,
+          "positive_hits": 25,
+          "section_count": 1,
+          "sum_sent": 0.7041406249,
+          "word_count": 393
+        },
+        "avg_sent": 0.7041406249,
+        "hit_count": 34,
+        "negative_hits": 9,
+        "positive_hits": 25,
+        "section_count": 1,
+        "sum_sent": 0.7041406249,
+        "word_count": 393
+      },
+      "unfunded status of plan 413,940 $ 428,332": {
+        "": {
+          "avg_sent": 0.19375,
+          "hit_count": 11,
+          "negative_hits": 1,
+          "positive_hits": 10,
+          "section_count": 1,
+          "sum_sent": 0.19375,
+          "word_count": 115
+        },
+        "avg_sent": 0.19375,
+        "hit_count": 11,
+        "negative_hits": 1,
+        "positive_hits": 10,
+        "section_count": 1,
+        "sum_sent": 0.19375,
+        "word_count": 115
+      },
+      "word_count": 8902
+    }
+  }
+}
