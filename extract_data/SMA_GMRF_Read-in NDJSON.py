@@ -20,11 +20,12 @@ import pandas as pd
 import numpy as np
 import ndjson
 import os
+import gzip
 import fnmatch
 
 
 # folder with the Reference, Data, Word Count, and Sentiment zipped files
-os.chdir('E:\\TJ\\en-US')
+os.chdir('/Users/trevorsmith/Downloads/July 7')
 
 
 #### Filing Reference Package ####
@@ -33,7 +34,7 @@ os.chdir('E:\\TJ\\en-US')
 combined_ref = []
 for file in os.listdir():
     if(fnmatch.fnmatch(file, 'SP_FILING_REFERENCE*')):
-        with open(file,'r',encoding='utf_8') as ref:
+        with gzip.open(file,'rb') as ref:
             ref = ndjson.load(ref)
         combined_ref.extend(ref)    
  
@@ -41,7 +42,7 @@ for file in os.listdir():
 ref_normalize = pd.json_normalize(combined_ref)
 
 # change order of columns to reflect User Guide documentation
-ref_normalize = ref_normalize[['ID', 'DOCUMENT_ID','DOCUMENT_TYPE','FILING_DATE','MODIFIED_AT','DETAIL_JSON.company_name','DETAIL_JSON.isin', 'DETAIL_JSON.ISIN_active','DETAIL_JSON.SP_DocumentId', 'DETAIL_JSON.parsing_status']]
+ref_normalize = ref_normalize[['ID', 'DOCUMENT_ID','DOCUMENT_TYPE','FILING_DATE','MODIFIED_AT','DETAIL_JSON.company_name','DETAIL_JSON.ISIN', 'DETAIL_JSON.ISIN_active','DETAIL_JSON.SP_DocumentId', 'DETAIL_JSON.parsing_status']]
 
 # convert the ID and document ID field to a string
 ref_normalize['ID'] = ref_normalize['ID'].apply(str)
@@ -55,7 +56,7 @@ ref_normalize['DETAIL_JSON.SP_DocumentId'] = ref_normalize['DETAIL_JSON.SP_Docum
 combined_sc = []
 for file in os.listdir():
     if(fnmatch.fnmatch(file, 'SP_FILING_SENTIMENT*')):
-        with open(file,'r',encoding='utf_8') as sc:
+        with gzip.open(file,'rb') as sc:
             sc = ndjson.load(sc)
         combined_sc.extend(sc)  
 
@@ -170,8 +171,6 @@ def sub_level_func(filing_type, section, sub):
 # get the AR sentiment data at the filing level
 ars = filing_level_func('ar')
 
-
-
 ## Get just the documents for active companies with their active ISINs or non-active companies with all their ISINs
 # Count the number of ISINs that are active and non-active for each document_id
 doc_id_table = pd.crosstab(index = ref_normalize['DOCUMENT_ID'], columns = ref_normalize['DETAIL_JSON.ISIN_active'])
@@ -190,6 +189,3 @@ onlyActive_allNonActive = ref_normalize[(ref_normalize['active'] == 1) & (ref_no
 
 # Join reference information with sentiment metrics
 combined = pd.merge(left = onlyActive_allNonActive, right = ars, on = 'ID')
-
-
-print(combined)
