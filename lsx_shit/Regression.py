@@ -1,80 +1,134 @@
-#!/usr/bin/env python
-#  -*- coding: utf-8 -*-
-
-"""
-This file is used to select, process, save, and read raw data.
-"""
-
-__author__ = 'jl208@illinois.edu'
-
 import json
 import os
 import math
 import numpy as np
 import pandas as pd
-from dateutil.relativedelta import relativedelta
-import statsmodels.formula.api as smf
-import DataCleaning as DC
+from scipy.special import comb
+import scipy.stats
 
-# #  "SECTOR"  "REGION"  "COUNTRY"  "SIMPLEINDUSTRYDESCRIPTION"  "TRADINGITEMSTATUSNAME"  None
-classification_tag = "SECTOR"
+json_file = open("sp500_bb.json", 'r', encoding='utf-8')
+desktop_path = os.path.expanduser("~/Desktop")
+json_file_path = os.path.join(desktop_path, "sp500_bb.json")
+# period_data = json.load("/Users/shuxianglei/Desktop/sp500_bb.json")
+with open(json_file_path, "r") as f:
+    period_data = json.load(f)
+Bull = period_data['bull']
+Bear = period_data['bear']
 
-# #  'avg_sent'  'sum_sent'  'hit_count'  'positive_hits'  'negative_hits'
-#                 'section_count'  'word_count'
-factor_name = 'avg_sent'
+print('Mean of Bull: ', np.mean(Bull), 'Mean of Bear: ', np.mean(Bear))
+print("Stationary Prob of Bull:", round(np.mean(Bull) / (np.mean(Bull) + np.mean(Bear)) * 100, 2),
+      "Stationary Prob of Bear:", round(np.mean(Bear) / (np.mean(Bull) + np.mean(Bear)) * 100, 2))
 
-# #  Get path
-# path = os.getcwd()
-path = os.path.abspath('.')
+dict = {}
 
-print(path)
+for q in range(1, 7):  # NB(1)  NB(2)  NB(3)  NB(4)  NB(5)  NB(6)
+    p_bull = len(Bull) * q / (len(Bull) * q + sum(Bull))  # transition probability between two sub-states
+    p_bear = len(Bear) * q / (len(Bear) * q + sum(Bear))  # transition probability between two sub-states
+    L_bull_l = [np.log(max(1, comb(int(Bull[i]) - 1, int(Bull[i]) - q))) + q * np.log(p_bull) + (Bull[i] - q) * np.log(
+        1 - p_bull) for i in range(len(Bull))]
+    L_bull = np.sum(L_bull_l)
+    L_bear_l = [np.log(max(1, comb(int(Bear[i]), q - 1))) + q * np.log(p_bear) + (Bull[i] - q) * np.log(1 - p_bear) for
+                i in range(len(Bear))]
+    L_bear = np.sum(L_bear_l)
+    print(q, round(p_bull, 2), round(L_bull, 2), round(p_bear, 2), round(L_bear, 2))
+    P = np.zeros((2 * q, 2 * q))
+    for i in range(q):
+        P[i, i] = 1 - p_bull
+        P[i, i + 1] = p_bull
+        P[i + q, i + q] = 1 - p_bear
+        if i + q + 1 < q * 2:
+            P[i + q, i + q + 1] = p_bear
+        else:
+            P[i + q, 0] = p_bear
+    # print(P)
 
-data, tag_dict, tag_dict_note = DC.read_classified_data(path, classification_tag)
+    Pk_list = [P]
+    Pk = P
+    PAAk = [np.sum(Pk[:q,:q])/q]
+    PBBk = [np.sum(Pk[q:,q:])/q]
+    for k in range(300):
+        Pk = Pk @ P
+        if k < 29:
+            Pk_list.append(Pk)
+            PAAk.append(np.sum(Pk[:q,:q])/q)
+            PBBk.append(np.sum(Pk[q:,q:])/q)
+        elif k == 299:
+            # print(Pk)
+            pi_bull = Pk[0, 0] / (Pk[0, 0] + Pk[0, q])
+            pi_bear = Pk[0, q] / (Pk[0, 0] + Pk[0, q])
+# print(len(PAAk))
+# print(len(PBBk))
+    miua = 0.08278787878787879
+    miub = -0.08621875
+    miu = pi_bull*0.08278787878787879 + pi_bear*(-0.08621875)
+    var = pi_bull * 0.007626591368227733 + pi_bear * 0.011494295898437498 + pi_bear*pi_bull*((miua - miub)**2)
 
-tag_dict = {key: tag_dict[key] for key in tag_dict if
-            key not in tag_dict_note[classification_tag + "_with_few_samples"]}
-tag_name = [key for key in tag_dict if key not in tag_dict_note[classification_tag + "_with_few_samples"]]
+    expection = []
+    for i in range(0, len(PAAk)):
+        expection.append(pi_bull*miua*(PAAk[i]*miua + (1 - PAAk[i])*miub) + pi_bear*miub*(((1-PBBk[i])*miua) + PBBk[i]*miub))
+    # print(expection)
 
-model_value_x = []
-model_value_y = []
-name = [factor_name, "time"]
-intercept_name = []
-coefficient_name = []
-variable_name_note_x = {tag_name[0]: "All dummy variables equal to 0"}
-for i, key in enumerate(tag_name):
+    rhok = []
+    for i in range(0, len(expection)):
+        rhok.append((expection[i] - miu**2) / var)
+    # print(rhok)
 
-    tag_value = tag_dict[key]
-    tag_value_avg = DC.average(tag_value, factor=factor_name, period=1, unit="month", if_civil=False)
-    time_length = len(tag_value_avg)
-    tag_number = len(tag_name)
-    if i > 0:
-        intercept_name.append("intercept_d{}".format(i))
-        coefficient_name.append("coef_d{}".format(i))
-        variable_name_note_x["intercept_d{}".format(i)] = "intercept of " + key + "'s dummy variable"
-        variable_name_note_x["coef_d{}".format(i)] = "coefficient of " + key + "'s dummy variable"
+    Rpp = np.zeros((30,30))
+    for i in range(30):
+        for j in range(30):
+            Rpp[i,j] = rhok[abs(i-j)-1] if i!=j else 1
+    # print(Rpp)
 
-    for j in range(time_length):
-        time = [j]
-        intercept_dummy = [0] * (tag_number - 1)
-        coefficient_dummy = [0] * (tag_number - 1)
-        if i > 0:
-            intercept_dummy[i - 1] = 1
-            coefficient_dummy[i - 1] = j
-        model_value_x.append(time + intercept_dummy + coefficient_dummy)
+    # Then compute AR coefficient Phi_p, make the sum equal to 1
+    Phi_p = np.linalg.inv(Rpp)@np.array(rhok)
+    theta = Phi_p / np.sum(Phi_p)
+    # print(theta)
 
-    model_value_y += tag_value_avg[factor_name].values.tolist()
-name += intercept_name + coefficient_name
+    Rnp = np.zeros((30,30))
+    for i in range(30):
+        for j in range(30):
+            Rnp[i,j] = rhok[abs(i-j)-1] if i!=j else 1
 
-model_value_x = np.array(model_value_x)
-model_value_y = np.array(model_value_y)
-model_value = np.column_stack((model_value_y, model_value_x))
-model_value = pd.DataFrame(model_value, columns=name)
+    theta1 = theta.T
 
-formula = name[0] + '~' + name[1]
-for i in range(2, len(name)):
-    formula += '+' + name[i]
-res = smf.ols(formula=formula, data=model_value)
-mod = res.fit()
-print(mod.summary())
-for key in variable_name_note_x:
-    print(key,' : ', variable_name_note_x[key])
+    ONE = np.ones((30,1))
+
+    m = theta1@ONE*miu
+
+    Rnn = Rpp.copy()
+
+    v = np.sqrt(theta1@Rnn@theta*var)
+
+    d = -(m/v)
+
+    fd = []
+
+    for i in range(0, len(d)):
+        fd.append(1 / np.sqrt(2 * np.pi) * np.exp(-(d**2) / 2))
+
+    koppa = (theta1@Rnp@Phi_p) / np.sqrt(theta1@Rnn@theta)
+
+    phi_d = scipy.stats.norm.cdf(d)
+    phi_d1 = scipy.stats.norm.cdf(-d)
+
+    fd1 = fd[0]
+
+    g = np.sqrt(var) * koppa * fd1
+
+    rf = 0.015
+
+    Ert = (miu - rf)*phi_d1 + rf + g
+
+    Varrt = (miu**2 + var) * phi_d + g*(2*miu + np.sqrt(var)*koppa*d) + (rf**2) * phi_d - (Ert**2)
+
+    alphart = g * (1 - (((miu - rf) * (miu - rf + np.sqrt(var)*koppa*d)) / var))
+
+    SRrt = ((Ert - rf)) / (np.sqrt(Varrt))
+
+    # print(SRrt, alphart)
+    # theta111 = dict ['{}'.format(q):theta.tolist()]
+    # json_str = json.dumps(theta111)
+    # with open("theta111","w",encoding="utf-8") as json_file:
+    #     json_file.write(json_str)
+    #     json_file.close()
+
