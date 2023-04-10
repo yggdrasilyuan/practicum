@@ -1,4 +1,4 @@
-# Zeyuan Pan's Week8 note
+# Zeyuan Pan's Week10 note
 ## Contribute
 - change some part of backtest system for testing hypothesis
 - check the different time period of stocks result for three months and six months
